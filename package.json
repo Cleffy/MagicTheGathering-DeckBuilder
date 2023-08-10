@@ -1,0 +1,25 @@
+{
+  "name": "magicthegathering-deckbuilder",
+  "version": "1.0.0",
+  "description": "Build a Magic the Gathering deck",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cleffy/MagicTheGathering-DeckBuilder.git"
+  },
+  "keywords": [
+    "MtG"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cleffy/MagicTheGathering-DeckBuilder/issues"
+  },
+  "homepage": "https://github.com/Cleffy/MagicTheGathering-DeckBuilder#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
