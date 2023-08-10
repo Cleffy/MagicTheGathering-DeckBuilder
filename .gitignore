@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# environment variables, DS_Store
+package-lock.json
+.DS_Store
+
