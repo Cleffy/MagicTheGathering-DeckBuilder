@@ -1,0 +1,1 @@
+//TODO: Pull cards that are legal to the ruleset and change parameters for deck build
