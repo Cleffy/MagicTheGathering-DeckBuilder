@@ -95,7 +95,7 @@ User.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'card'
-    }
+    },
 );
 
 module.exports = Card;
