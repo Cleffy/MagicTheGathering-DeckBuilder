@@ -1,2 +1,2 @@
 # MagicTheGathering-DeckBuilder
-Build Magic the Gathering decks
+Build Magic the Gathering decks 
