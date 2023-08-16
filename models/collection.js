@@ -5,10 +5,22 @@ const sequelize = require('../config/connection');
 class Collection extends Model {
 }
 
-User.init(
-    {
-        //TODO: add table info
+User.init( {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false, 
+        primaryKey: true,
+        autoIncrement: true
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
+}
 );
 
 module.exports = Collection;
