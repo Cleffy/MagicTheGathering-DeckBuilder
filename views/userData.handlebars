@@ -1,0 +1,17 @@
+{{#if logged_in}}
+<h2>{{user.name}}</h2>
+<button>View Decks</button>
+<button>View Collection</button>
+<button>View Magic Library</button>
+<button>Logout</button>
+{{/if}}
+{{#if logged_out}}
+<h2>Login</h2>
+<form>
+    <label for="loginUser">User or Email: </label>
+    <input type="text" id="loginUser"/>
+    <label for="loginPassword">Password: </label>
+    <input type="password" id="loginPassword" />
+    <button type="submit">Login</button>
+</form>
+{{/if}}
