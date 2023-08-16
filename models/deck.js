@@ -6,9 +6,6 @@ class Deck extends Model {
 }
 
 User.init(
-    {
-        //TODO: add table info
-    }
-);
+)
 
 module.exports = Deck;
