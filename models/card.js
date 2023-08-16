@@ -23,7 +23,7 @@ const sequelize = require('../config/connection');
 class Card extends Model {
 }
 
-User.init(
+Card.init(
     {
         id: {
             type: DataTypes.INTEGER,

@@ -5,7 +5,7 @@ const sequelize = require('../config/connection');
 class Deck extends Model {
 }
 
-User.init(
+Deck.init(
     {
         id: {type: DataTypes.INTEGER,
         allowNull: false,
@@ -19,7 +19,10 @@ User.init(
         allowNull: false
     },
 
-    }
+    },
+    {
+        sequelize
+    },
 );
 
 module.exports = Deck;

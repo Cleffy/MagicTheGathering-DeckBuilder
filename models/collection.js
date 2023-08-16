@@ -5,7 +5,7 @@ const sequelize = require('../config/connection');
 class Collection extends Model {
 }
 
-User.init( {
+Collection.init( {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false, 
@@ -20,7 +20,10 @@ User.init( {
         type: DataTypes.INTEGER,
         allowNull: false,
     }
-}
+},
+{
+    sequelize
+},
 );
 
 module.exports = Collection;
