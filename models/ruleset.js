@@ -4,10 +4,10 @@ const sequelize = require('../config/connection');
 
 class Ruleset extends Model {
 }
-
+//* need to find full rules doc//
 User.init(
     {
-        //TODO: add table info
+        //TODO: add table info 
     }
 );
 
