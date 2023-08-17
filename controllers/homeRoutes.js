@@ -2,15 +2,17 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
+//Home route
 router.get('/', (request, response) => {
     response.render('home');
 });
+//DeckBuilder route
 router.get('/deckBuilder', (request, response) => {
     response.render('deckBuilder');
 });
-//TODO: get login status
-//TODO: redirect to login if not logged in
-
-//TODO: if logged in redirect to home
+//DeckViewer route
+router.get('/deckViewer', (request, response) => {
+    response.render('deckViewer');
+});
 
 module.exports = router;
