@@ -10,7 +10,11 @@ Ruleset.init(
         //TODO: add table info 
     },
     {
-        sequelize
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'ruleset'
     },
 );
 
