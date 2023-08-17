@@ -5,21 +5,30 @@ const sequelize = require('../config/connection');
 class Deck extends Model {
 }
 
-User.init(
+Deck.init(
     {
-        id: {type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        complete: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        },
     },
-        name: {type: DataTypes.STRING,
-        allowNull: false
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'deck'
     },
-        complete: {type: DataTypes.BOOLEAN,
-        allowNull: false
-    },
-
-    }
 );
 
 module.exports = Deck;
