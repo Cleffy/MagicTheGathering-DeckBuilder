@@ -5,10 +5,17 @@ const sequelize = require('../config/connection');
 class Ruleset extends Model {
 }
 //* need to find full rules doc//
-User.init(
+Ruleset.init(
     {
         //TODO: add table info 
-    }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'ruleset'
+    },
 );
 
 module.exports = Ruleset;
