@@ -9,6 +9,7 @@ const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
 //Start Express
 const app = express();
+//const hbs = create({});
 const PORT = process.env.PORT || 3001;
 
 
@@ -34,9 +35,6 @@ app.use(session(sess));
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
-app.get('/', (request, response) => {
-    response.render('home');
-});
 
 //Create express routes
 app.use(express.json());
