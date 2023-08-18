@@ -1,0 +1,4 @@
+Done - /config/connection.js
+Done - .gitignore
+Done - LICENSE
+Done - server.js
