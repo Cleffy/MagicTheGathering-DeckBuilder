@@ -26,8 +26,8 @@ router.delete('/:deck_info', (req, res) => {
         deck_info: req.params.deck_info,
       },
     })
-      .then((deletedBook) => {
-        res.json(deletedBook);
+      .then((deletedDeck) => {
+        res.json(deletedDeck);
       })
       .catch((err) => res.json(err));
   });
