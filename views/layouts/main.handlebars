@@ -9,29 +9,31 @@
     <header>
         <h1>Magic the Gathering: Deck Builder</h1>
         <section id="user">
-            {{#if logged_in}}
-            <h2>{{user.name}}</h2>
-            <form name="userLogout" action="../../public/js/logout.js">
-                <input type="button" onclick="logout()" value="Logout" />
-            </form>
+            {{#if user}}
+            <h2>{{user.name}}</h2>       
+            <button type="button" onclick="logout()">Log Out</button>
+            {{/if}}
+            <!--
                 {{#if user.decks.length}}
                 <h3>Saved Decks:</h3>
                     {{#each decks as |deck|}}
                     {{/each}}
                 {{/if}}
-            {{else}}
+            -->
+            {{#unless user}}
             <h2>Login</h2>
-            <form id="userLogin" action="../../public/js/login.js">
-                <label for="name">User Name: </label><input type="text" name="name" />
-                <label for="password">Password: </label><input type="text" name="password" />
-                <input type="submit" value="Login" id="loginButton" />
-                <input type="submit" value="Register" id="registerButton"/>
-            </form>
-            {{/if}}
+            <label for="name">User Name: </label>
+            <input type="text" name="name" />
+            <label for="password">Password: </label>
+            <input type="text" name="password" />
+            <button type="button" onclick="login()">Login</button>
+            <button type="button" onclick="register()">Register</button>
+            {{/unless}}
         </section>
     </header>
     {{{body}}}
 
     <script src="/js/login.js"></script>
+    <script src="/js/logout.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3001;
 
 //Create an Express Session
 const sess = {
-    secret: 'this is the secret',
+    secret: process.env.DB_SESSION_SECRET,
     cookie: {
         maxAge: 30*24*60*60*1000,
         httpOnly: true,

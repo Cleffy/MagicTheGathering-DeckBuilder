@@ -1,13 +1,13 @@
 async function login(){
-    //event.preventDefault();
 
-    let user = document.getElementById('user');
-    let password = document.getElementById('password');
+    let name = document.getElementsByTagName('input')[0].value.trim();
+    let password = document.getElementsByTagName('input')[1].value.trim();
 
-    if(user && password){
+
+    if(name && password){
         let response = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({user, password}),
+            body: JSON.stringify({name, password}),
             headers: {'Content-Type': 'application/json'}
         });
 
@@ -20,11 +20,9 @@ async function login(){
     }
 }
 
-async function register(event){
-    event.preventDefault();
-
-    let name = document.forms['userLogin'].elements['name'].value.trim();
-    let password = document.forms['userLogin'].elements['password'].value.trim();
+async function register(){
+    let name = document.getElementById('name').value.trim();
+    let password = document.getElementById('password').value.trim();
 
     if(name && password){
         let response = await fetch('/api/users/', {
@@ -41,5 +39,3 @@ async function register(event){
         }
     }
 }
-
-document.getElementById('registerButton').addEventListener('click', register);

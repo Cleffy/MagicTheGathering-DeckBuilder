@@ -4,13 +4,11 @@ const { User } = require('../../models');
 //Create new user
 router.post('/', async (request, result) => {
     try{
-        /*
         const otherUser = await User.findOne({ where: { name: request.body.name }});
         if(otherUser){
             result.status(400).json({message: 'This user already exists. Login or try another name'});
             return;
         }
-        */
         const userData = await User.create(request.body);
 
         request.session.save(() => {
@@ -41,8 +39,8 @@ router.post('/login', async (request, result) => {
         }
 
         request.session.save(() => {
-            request.session.userID = userData.id;
-            request.session.loggedIn = true;
+            request.session.user_id = userData.id;
+            request.session.logged_in = true;
 
             result.status(200).json({user: userData, message: 'You are now logged in.'});
         });
@@ -53,7 +51,7 @@ router.post('/login', async (request, result) => {
 });
 
 //User logout
-router.post('.logout', (request, result) => {
+router.post('/logout', (request, result) => {
     if(request.session.loggedIn){
         request.session.destroy(() => {
             result.status(204).end();
