@@ -6,12 +6,31 @@
     <title>Magic the Gathering: Deck Builder</title>
 </head>
 <body>
-    <header height="15%" width="90%">
-
+    <header>
+        <h1>Magic the Gathering: Deck Builder</h1>
+        <section id="user">
+            {{#if loggedIn}}
+            <h2>{{user.name}}</h2>
+            <form name="userLogout" action="../../public/js/logout.js">
+                <input type="button" onclick="logout()" value="Logout" />
+            </form>
+                {{#if user.decks.length}}
+                <h3>Saved Decks:</h3>
+                    {{#each decks as |deck|}}
+                    {{/each}}
+                {{/if}}
+            {{else}}
+            <h2>Login</h2>
+            <form name="userLogin" action="../../public/js/login.js">
+                <label for="user">User: </label><input type="text" name="user" />
+                <label for="password">Password: </label><input type="text" name="password" />
+                <input type="button" onclick="login()" value="Login" />
+                <input type="button" onclick="register()" value="Register" />
+            </form>
+            {{/if}}
+        </section>
     </header>
-    <main height="80%" width="90%">
-
-    </main>
+    {{{body}}}
 
 </body>
 </html>
