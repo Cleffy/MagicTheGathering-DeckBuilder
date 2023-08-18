@@ -4,11 +4,18 @@ const { User } = require('../../models');
 //Create new user
 router.post('/', async (request, result) => {
     try{
+        /*
+        const otherUser = await User.findOne({ where: { name: request.body.name }});
+        if(otherUser){
+            result.status(400).json({message: 'This user already exists. Login or try another name'});
+            return;
+        }
+        */
         const userData = await User.create(request.body);
 
         request.session.save(() => {
-            request.session.userID = userData.id;
-            request.session.loggedIn = true;
+            request.session.user_id = userData.id;
+            request.session.logged_in = true;
 
             result.status(200).json(userData);
         });
@@ -21,7 +28,7 @@ router.post('/', async (request, result) => {
 //User login
 router.post('/login', async (request, result) => {
     try{
-        const userData = await User.findOne({ where: { user: request.body.user }});
+        const userData = await User.findOne({ where: { name: request.body.name }});
         if(!userData){
             result.status(400).json({message: 'This user is not registered. Please register or try again.'});
             return;
