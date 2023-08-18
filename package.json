@@ -4,7 +4,8 @@
   "description": "Build a Magic the Gathering deck",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "express-session": "^1.17.3",
     "mtgsdk": "^1.0.0",
     "mysql2": "^3.6.0",
+    "normalize.css": "^8.0.1",
     "sequelize": "^6.32.1"
   }
 }
