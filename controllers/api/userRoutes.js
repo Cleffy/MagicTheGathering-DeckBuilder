@@ -9,29 +9,20 @@ router.get('/', async (req, res) => {
       res.status(500).json(err);
     }
   });
-  /*
-  // CREATE a new user
-  router.post('/', async (req, res) => {
-    try {
-      const userData = await User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-      });
-      res.status(200).json(userData);
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
-  */
+
 //Create new user
 router.post('/', async (request, result) => {
     try{
+        const otherUser = await User.findOne({ where: { name: request.body.name }});
+        if(otherUser){
+            result.status(400).json({message: 'This user already exists. Login or try another name'});
+            return;
+        }
         const userData = await User.create(request.body);
 
         request.session.save(() => {
-            request.session.userID = userData.id;
-            request.session.loggedIn = true;
+            request.session.user_id = userData.id;
+            request.session.logged_in = true;
 
             result.status(200).json(userData);
         });
@@ -90,37 +81,11 @@ router.post('/', async (request, result) => {
       res.status(500).json(err);
     }
   });
-/*
-  router.post('/login', async (req, res) => {
-    try {
-      // we search the DB for a user with the provided email
-      const userData = await User.findOne({ where: { email: req.body.email } });
-      if (!userData) {
-        // the error message shouldn't specify if the login failed because of wrong email or password
-        res.status(404).json({ message: 'Login failed. Please try again!' });
-        return;
-      }
-      // use `bcrypt.compare()` to compare the provided password and the hashed password
-      const validPassword = await bcrypt.compare(
-        req.body.password,
-        userData.password
-      );
-      // if they do not match, return error message
-      if (!validPassword) {
-        res.status(400).json({ message: 'Login failed. Please try again!' });
-        return;
-      }
-      // if they do match, return success message
-      res.status(200).json({ message: 'You have successfully logged in!' });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-*/
+
 //User login
 router.post('/login', async (request, result) => {
     try{
-        const userData = await User.findOne({ where: { user: request.body.user }});
+        const userData = await User.findOne({ where: { name: request.body.name }});
         if(!userData){
             result.status(400).json({message: 'This user is not registered. Please register or try again.'});
             return;
@@ -133,8 +98,8 @@ router.post('/login', async (request, result) => {
         }
 
         request.session.save(() => {
-            request.session.userID = userData.id;
-            request.session.loggedIn = true;
+            request.session.user_id = userData.id;
+            request.session.logged_in = true;
 
             result.status(200).json({user: userData, message: 'You are now logged in.'});
         });
@@ -145,7 +110,7 @@ router.post('/login', async (request, result) => {
 });
 
 //User logout
-router.post('.logout', (request, result) => {
+router.post('/logout', (request, result) => {
     if(request.session.loggedIn){
         request.session.destroy(() => {
             result.status(204).end();
