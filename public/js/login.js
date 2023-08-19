@@ -25,7 +25,7 @@ async function register(){
     let password = document.getElementById('password').value.trim();
 
     if(name && password){
-        let response = await fetch('/api/users/', {
+        let response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({name, password}),
             headers: {'Content-Type': 'application/json'}
