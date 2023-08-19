@@ -21,15 +21,14 @@ User.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
-        },
+            unique: true
+        },/*
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -37,14 +36,14 @@ User.init(
             validate: {
                 isEmail: true,
             },
-        },
+        },*/
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [8],
-            },
-        },
+            }
+        }
     },
     {
         hooks: {
@@ -57,7 +56,7 @@ User.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "user",
+        modelName: 'User'
     }
 );
 
