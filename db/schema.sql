@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS deckBuilder_db;
-CREATE DATABASE deckBuilder_db;
+DROP DATABASE IF EXISTS deckbuilder_db;
+CREATE DATABASE deckbuilder_db;
