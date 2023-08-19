@@ -1,4 +1,17 @@
 Done - /config/connection.js
+    /controllers/api/cardRoutes.js
+    /controllers/api/deckRoutes.js
+    /controllers/api/index.js
+Done - /controllers/api/userRoutes.js
+    /controllers/homeRoutes.js
+    /controllers/index.js
+Done - /db/schema.sql
+    /models/card.js
+    /models/collection.js
+    /models/deck.js
+    /models/index.js
+    /models/ruleset.js
+Done - /models/user.js
 Done - .gitignore
 Done - LICENSE
 Done - server.js
