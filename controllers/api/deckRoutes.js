@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const Deck = require("../../models/deck");
 
-//TODO: Get Deck Info
+// Get Deck Info
 router.get('/', (req, res) => {
     Deck.findAll().then((deckInfo) => {
         res.json(deckInfo);
     });
 });
-//TODO: Update Deck Info
+//  Update Deck Info
 router.put('/:deck_info', (req, res) => {
     Deck.update(
         {
@@ -18,7 +18,7 @@ router.put('/:deck_info', (req, res) => {
     )
 });
 //TODO: Create Deck Info
-//TODO: Delete Deck
+// Delete Deck
 
 router.delete('/:deck_info', (req, res) => {
      Deck.destroy({
