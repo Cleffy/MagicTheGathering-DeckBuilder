@@ -29,6 +29,10 @@ const sess = {
     })
 };
 app.use(session(sess));
+app.use(function (request, response, next){
+    response.locals.session = request.session;
+    next();
+});
 
 //Create a handlebars engine
 //const hbs = expressHandlebars.create({helpers});

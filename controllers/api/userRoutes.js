@@ -16,14 +16,13 @@ router.post('/', async (request, response) => {
         const userData = await User.create(request.body);
 
         request.session.save(() => {
-            request.session.userId = userData.id;
+            request.session.user = userData;
             request.session.loggedIn = true;
 
             response.status(200).json(userData);
         });
     }
     catch(error){
-        console.error(error);
         response.status(400).json(error);
     }
 });
@@ -94,13 +93,10 @@ router.post('/login', async (request, response) => {
         }
 
         request.session.save(() => {
-            request.session.userId = userData.id;
+            request.session.user = userData;
             request.session.loggedIn = true;
-
             response.status(200).json({user: userData, message: 'You are now logged in.'});
         });
-        console.log(request.session.loggedIn);
-        console.log(request.session.userID);
     }
     catch(error){
         response.status(400).json(error)

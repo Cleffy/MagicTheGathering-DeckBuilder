@@ -9,8 +9,8 @@
     <header>
         <h1>Magic the Gathering: Deck Builder</h1>
         <section id="user">
-            {{#if user}}
-            <h2>{{user.name}}</h2>       
+            {{#if session.user}}
+            <h2>{{session.user.name}}</h2>       
             <button type="button" onclick="logout()">Log Out</button>
             {{/if}}
             <!--
@@ -20,7 +20,7 @@
                     {{/each}}
                 {{/if}}
             -->
-            {{#unless user}}
+            {{#unless session.user}}
             <h2>Login</h2>
             <label for="name">User Name: </label>
             <input type="text" name="name" id="name" />
