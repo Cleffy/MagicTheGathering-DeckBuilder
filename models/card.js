@@ -26,17 +26,17 @@ class Card extends Model {
 Card.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(50),
             allowNull: false, 
             primaryKey: true,
         },
         name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(50),
             allowNull: false,
         },
         type: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING(50),
+            allowNull: true,
         },
         /* --Deprecated
         subTypes: {
@@ -49,7 +49,7 @@ Card.init(
             allowNull: true
         },
         manaCost: { 
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(20),
             allowNull: true,
         },
         ability: {
@@ -73,15 +73,15 @@ Card.init(
             allowNull: true,
         },
         rarity: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(20),
             allowNull: true,
         },
         set: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(50),
             allowNull: true,
         },
         artist: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(50),
             allowNull: true,
         },
         /* --Deprecated
