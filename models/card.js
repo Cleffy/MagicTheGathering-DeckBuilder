@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
  * id- unique identifier for easy reference
  * name- the name of the card
  * spellType- the card's method of being played (instant, sorcery, creature, artifact, enchantment, land, planeswalker)
- * subType- a category or "tribe" the card belongs to (goblins, elves, vehicles, equipment, etc.)
+ * --deprecated subType- a category or "tribe" the card belongs to (goblins, elves, vehicles, equipment, etc.)
  * color- the 5 "flavors" of mana used for playing cards. (white-W, blue-U, black-B, red-R, green-G)
  * manaCost- the total of required mana to play the card.
  * ability- anything written in the text area of the card. this describes mechanical function within the game.
@@ -17,7 +17,7 @@ const sequelize = require('../config/connection');
  * rarity- the arbitrary valuation of a card.
  * set- a group of cards released together.
  * artist- the specific human acknowledged as having created the image on the card.
- * supertype- the legendary quality imparts certain mechanical restrictions. otherwise: basic.
+ * --deprecated supertype- the legendary quality imparts certain mechanical restrictions. otherwise: basic.
  * 
  */
 class Card extends Model {
@@ -26,25 +26,26 @@ class Card extends Model {
 Card.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false, 
             primaryKey: true,
-            autoIncrement: true
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        spellType: {
+        type: {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        /* --Deprecated
         subTypes: {
             type: DataTypes.STRING,
             allowNull: true,
         },
+        */
         color: {
-            type: DataTypes.STRING,
+            type: DataTypes.CHAR(5),
             allowNull: true
         },
         manaCost: { 
@@ -60,33 +61,35 @@ Card.init(
             allowNull: true,
         },
         power: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.CHAR(2),
             allowNull: true,
         },
         toughness: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.CHAR(2),
             allowNull: true,
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         rarity: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         set: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         artist: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
+        /* --Deprecated
         superType: {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        */
         
     },
     {

@@ -14,5 +14,11 @@ router.get('/deckBuilder', (request, response) => {
 router.get('/deckViewer', (request, response) => {
     response.render('deckViewer');
 });
+router.get('/register', (request, response) => {
+    response.render('register');
+});
+router.get('/importData', (request, response) => {
+    response.render('importData');
+});
 
 module.exports = router;
