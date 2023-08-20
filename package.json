@@ -2,9 +2,9 @@
   "name": "magicthegathering-deckbuilder",
   "version": "1.0.0",
   "description": "Build a Magic the Gathering deck",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js --watch",
     "seed": "node seeds/index.js"
   },
   "repository": {
@@ -30,6 +30,7 @@
     "mtgsdk": "^1.0.0",
     "mysql2": "^3.6.0",
     "normalize.css": "^8.0.1",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "stream-json": "^1.8.0"
   }
 }

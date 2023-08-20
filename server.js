@@ -41,12 +41,14 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 //Create express routes
-app.use(express.json());
+app.use(express.json({}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
+// sequelize.sync({alter: true});
+
 //Start express, sync with sequelize database
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log('Now listening on ' + PORT));
 });

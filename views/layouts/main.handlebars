@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic the Gathering: Deck Builder</title>
+    <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
     <header>
-        <h1>Magic the Gathering: Deck Builder</h1>
+        <section id="title">
+            <h1>Magic the Gathering: Deck Builder</h1>
+        </section>
         <section id="user">
             {{#if session.user}}
             <h2>{{session.user.name}}</h2>       
@@ -21,18 +24,17 @@
                 {{/if}}
             -->
             {{#unless session.user}}
-            <h2>Login</h2>
+            <h2>Login</h2><br />
             <label for="name">User Name: </label>
-            <input type="text" name="name" id="name" />
+            <input type="text" name="name" id="name" /><br />
             <label for="password">Password: </label>
-            <input type="text" name="password"  id="password" />
+            <input type="text" name="password"  id="password" /><br />
             <button type="button" onclick="login()">Login</button>
-            <button type="button" onclick="register()">Register</button>
+            <a href="/register"><button type="button">Register</button></a>
             {{/unless}}
         </section>
     </header>
-    {{{body}}}
-
+    <main>{{{body}}}</main>
     <script src="/js/login.js"></script>
     <script src="/js/logout.js"></script>
 </body>
