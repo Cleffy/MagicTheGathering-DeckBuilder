@@ -24,15 +24,29 @@ main{
     display: block;
     text-align: right;
 }
+
 #collection{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+#buildArea{
+    width: 50%;
+}
+.book{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 200px 200px 200px;
     gap: 4px;
-    max-width: 50%;
+    max-width: 90%;
+    max-height: 100%;
+    background-color: black;
 }
-#buildArea{
-    max-width: 50%;
+.navigation{
+    width: 5%;
+    height: 200px;
+    background-color: antiquewhite;
+    border-radius: 4px;
 }
 .card{
     background-color: antiquewhite;

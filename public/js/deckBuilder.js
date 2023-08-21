@@ -1,45 +1,64 @@
 let collectionEl = document.getElementById('collection');
 let buildAreaEl = document.getElementById('buildArea');
 
-let collection;
+let collection = new Array();
 let index = 0;
 let iterations = 0;
-let scryFallReady = true;
-//Get cards
-function getFormat(format){
-    fetch(`/api/cards/format/${format}`, {
-        method: 'GET'
-    })
-    .then(response => response.json())
-    .then(data => {
-        collection = data;
-        renderCollection(index);
-    });
+
+window.onload = async function(){
+    collection = await getFormat('standard');
+    renderCollection();
 }
-function pageForward(){
-    if(collection = null){
-        index = 0;
-        return;
-    }
-    index += 18;
-    if(index > collection.length){
-        index = collection.length;
-    }
-}
-function pageBack(){
-    if(collection = null){
-        index = 0;
-        return;
-    }
-    index -= 18;
-    if(index < 0){
-        index = 0;
-    }
+
+async function getFormat(format){
+    const response = await fetch(`/api/cards/format/${format}`);
+    const data = await response.json();
+    return data;
 }
 function renderCollection(){
+    collectionEl.innerHTML = '';
+    let bookEl = document.createElement('section');
+    let pageBackEl = document.createElement('div');
+    let pageForwardEl = document.createElement('div');
+    bookEl.className = 'book';
+    pageBackEl.className = 'navigation';
+    pageForwardEl.className = 'navigation';
+    pageBackEl.innerText = ' ';
+    pageForwardEl.innerText = ' ';
+    pageBackEl.addEventListener('click', function(){
+        if(collection.length == 0){
+            index = 0;
+            return;
+        }
+        index -= 18;
+        if(index < 0){
+            index = 0;
+        }
+        renderCollection();
+    });
+    pageForwardEl.addEventListener('click', function(){
+        if(collection.length == 0){
+            index = 0;
+            return;
+        }
+        index += 18;
+        if(index > collection.length - 18){
+            index = collection.length - 18;
+        }
+        renderCollection();
+    });
+    
+    collectionEl.appendChild(pageBackEl);
+    collectionEl.appendChild(bookEl);
+    collectionEl.appendChild(pageForwardEl);
+    renderBook(bookEl);
+}
+
+function renderBook(bookEl,){
     if(collection[index+iterations]){
         let articleEl = document.createElement('article');
         articleEl.className = 'card';
+        articleEl.id = `${(index + iterations)}`;
         let h4El = document.createElement('h4');
         h4El.textContent = collection[index+iterations].cardName;
         let imgEl = document.createElement('img');
@@ -49,7 +68,7 @@ function renderCollection(){
         articleEl.appendChild(imgEl);
         articleEl.appendChild(h4El);
 
-        collectionEl.appendChild(articleEl);
+        bookEl.appendChild(articleEl);
 
         iterations++;
         if(iterations == 18){
@@ -61,6 +80,5 @@ function renderCollection(){
         iterations = 0;
         return;
     }
-    setTimeout(renderCollection, 100);
+    setTimeout(renderBook(bookEl), 100);
 }
-getFormat('standard');
