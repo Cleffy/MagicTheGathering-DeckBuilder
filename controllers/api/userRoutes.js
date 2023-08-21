@@ -1,16 +1,54 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Collection, Deck, User } = require('../../models');
 
+// GET All users
 router.get('/', async (request, response) => {
     try {
-      const userData = await User.findAll();
-      response.status(200).json(userData);
+        const userData = await User.findAll({
+            include: [{ model: Collection }, { model: Deck }]
+        });
+        response.status(200).json(userData);
     } catch (error) {
-      response.status(500).json(error);
+        response.status(500).json(error);
     }
-  });
+});
+// GET a user by id
+router.get('/:name', async (request, response) => {
+    try {
+        const userData = await User.findOne({
+            where: {name : request.params.name},
+            include: [{ model: Collection }, { model: Deck }]
+        });
+        if (!userData) {
+          response.status(404).json({ message: 'No user with this id!' });
+          return;
+        }
+        response.status(200).json(userData);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+});
 
-//Create new user
+
+// UPDATE a user by id
+router.put('/:id', async (request, response) => {
+    try {
+        const userData = await User.update(request.body, {
+          where: {
+            id: request.params.id,
+          },
+        });
+        if (!userData[0]) {
+          response.status(404).json({ message: 'No user with this id!' });
+          return;
+        }
+        response.status(200).json(userData);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+});
+
+// CREATE a new user
 router.post('/', async (request, response) => {
     try{
         const userData = await User.create(request.body);
@@ -26,57 +64,6 @@ router.post('/', async (request, response) => {
         response.status(400).json(error);
     }
 });
-
-  // GET one user
-  router.get('/:id', async (request, response) => {
-    try {
-      const userData = await User.findByPk(request.params.id);
-      if (!userData) {
-        response.status(404).json({ message: 'No user with this id!' });
-        return;
-      }
-      response.status(200).json(userData);
-    } catch (error) {
-      response.status(500).json(error);
-    }
-  });
-  
-  // UPDATE a user
-  router.put('/:id', async (request, response) => {
-    try {
-      const userData = await User.update(request.body, {
-        where: {
-          id: request.params.id,
-        },
-      });
-      if (!userData[0]) {
-        response.status(404).json({ message: 'No user with this id!' });
-        return;
-      }
-      response.status(200).json(userData);
-    } catch (error) {
-      response.status(500).json(error);
-    }
-  });
-  
-  // DELETE a user
-  router.delete('/:id', async (request, response) => {
-    try {
-      const userData = await User.destroy({
-        where: {
-          id: request.params.id,
-        },
-      });
-      if (!userData) {
-        response.status(404).json({ message: 'No user with this id!' });
-        return;
-      }
-      response.status(200).json(userData);
-    } catch (error) {
-      response.status(500).json(error);
-    }
-  });
-
 //User login
 router.post('/login', async (request, response) => {
     try{
@@ -102,7 +89,6 @@ router.post('/login', async (request, response) => {
         response.status(400).json(error)
     }
 });
-
 //User logout
 router.post('/logout', (request, response) => {
     if(request.session.loggedIn){
@@ -115,5 +101,22 @@ router.post('/logout', (request, response) => {
     }
 });
 
+// DELETE a user
+router.delete('/:id', async (request, response) => {
+    try {
+        const userData = await User.destroy({
+          where: {
+            id: request.params.id,
+          },
+        });
+        if (!userData) {
+          response.status(404).json({ message: 'No user with this id!' });
+          return;
+        }
+        response.status(200).json(userData);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+});
 
 module.exports = router;

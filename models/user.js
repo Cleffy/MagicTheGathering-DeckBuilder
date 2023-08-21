@@ -6,9 +6,10 @@ const sequelize = require("../config/connection");
  * @class User
  * @param id
  * @param name
+ * @param email
  * @param password
  * 
- * Stores the name and password of users
+ * Stores the name email and password of users
  */
 class User extends Model {
   //password check
@@ -56,7 +57,7 @@ User.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'User'
+        modelName: 'user'
     }
 );
 

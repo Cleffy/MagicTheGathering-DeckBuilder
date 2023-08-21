@@ -1,20 +1,37 @@
+/**
+ * @class Card
+ * @param id            -Skryfall ID for card
+ * @param parentEl      -Element this will be placed into
+ */
+
 class Card {
-    constructor(title, description, image) {
-        this.title = title;
-        this.description = description;
-        this.image = image;
+    constructor(id, parentEl) {
+        this.id = id;
+        this.parentEl = parentEl;
+        this.name;
+        this.image;
+    }
+    async getCardInfo() {
+        let response = await fetch('/api/cards/' + this.id, {
+            method: 'GET'
+        });
+        this.name = response.name;
+        this.image = response.image;
     }
 
     display() {
-        console.log(`displaying card: ${this.title} - ${this.description} - ${this.image}`);
-        
-        const card = document.createElement('span')
+        let articleEl = document.createElement('article');
+        articleEl.className = 'card';
+        let h4El = document.createElement('h4');
+        h4El.textContent = this.name;
+        let imgEl = document.createElement('img');
+        imgEl.className = 'cardImg';
+        imgEl.src = this.image;
 
-        card.setAttribute(`card-id-${this.title}`)
+        articleEl.appendChild(h4El);
+        articleEl.appendChild(imgEl);
 
-
-
-        document.body.appendChild(card)
+        this.parentEl.appendChild(articleEl);
     }
 };
 
