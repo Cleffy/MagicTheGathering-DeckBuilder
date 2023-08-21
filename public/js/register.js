@@ -1,3 +1,11 @@
+/**
+ * @function register
+ * @param name
+ * @param email
+ * @param password
+ * 
+ * Creates a new user.
+ */
 async function register(){
     let name = document.getElementById('regName').value.trim();
     let email = document.getElementById('regEmail').value.trim();
@@ -11,10 +19,22 @@ async function register(){
         });
 
         if(response.ok){
+            displayStatus('Registered an account.')
             document.location.replace('/');
         }
         else{
-            alert('Failed to register.');
+            displayStatus('Failed to register.');
         }
     }
+}
+
+//Functions to display status - currently unfunctional
+function displayStatus(status){
+    let statusEl = document.getElementById('regStatus');
+    statusEl.innerHTML = status;
+    setTimeout(resetStatus(), 10000);
+}
+function resetStatus(){
+    let statusEl = document.getElementById('regStatus');
+    statusEl.innerHTML = '';
 }

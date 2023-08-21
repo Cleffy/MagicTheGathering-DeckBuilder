@@ -1,24 +1,25 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-/**this is a table for the information specific to each card
- * id- unique identifier for easy reference
- * name- the name of the card
- * spellType- the card's method of being played (instant, sorcery, creature, artifact, enchantment, land, planeswalker)
- * --deprecated subType- a category or "tribe" the card belongs to (goblins, elves, vehicles, equipment, etc.)
- * color- the 5 "flavors" of mana used for playing cards. (white-W, blue-U, black-B, red-R, green-G)
- * manaCost- the total of required mana to play the card.
- * ability- anything written in the text area of the card. this describes mechanical function within the game.
- * flavorText- additional text in the text area pertaining to the game's lore and having no mechanical function.
- * power- the force with which a creature damages its opposition.
- * toughness- force required to slay a creature.
- * image- artistic interpretation of the cared.
- * rarity- the arbitrary valuation of a card.
- * set- a group of cards released together.
- * artist- the specific human acknowledged as having created the image on the card.
- * --deprecated supertype- the legendary quality imparts certain mechanical restrictions. otherwise: basic.
+/**
+ * @class Card
+ * @param id- unique identifier for easy reference
+ * @param name- the name of the card
+ * @param spellType- the card's method of being played (instant, sorcery, creature, artifact, enchantment, land, planeswalker)
+ * @param subType(deprecated)- a category or "tribe" the card belongs to (goblins, elves, vehicles, equipment, etc.)
+ * @param color- the 5 "flavors" of mana used for playing cards. (white-W, blue-U, black-B, red-R, green-G)
+ * @param manaCost- the total of required mana to play the card.
+ * @param ability- anything written in the text area of the card. this describes mechanical function within the game.
+ * @param flavorText- additional text in the text area pertaining to the game's lore and having no mechanical function.
+ * @param power- the force with which a creature damages its opposition.
+ * @param toughness- force required to slay a creature.
+ * @param image- artistic interpretation of the cared.
+ * @param rarity- the arbitrary valuation of a card.
+ * @param set- a group of cards released together.
+ * @param artist- the specific human acknowledged as having created the image on the card.
+ * @param supertype(deprecated)- the legendary quality imparts certain mechanical restrictions. otherwise: basic.
  * 
+ * Holds information on a Magic Card
  */
 class Card extends Model {
 }
