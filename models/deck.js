@@ -40,8 +40,8 @@ Deck.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'deck'
-    },
+        modelName: "deck",
+    }
 );
 
 module.exports = Deck;

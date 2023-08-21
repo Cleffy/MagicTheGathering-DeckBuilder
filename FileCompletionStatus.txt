@@ -15,11 +15,11 @@ Done - /models/index.js
 Done - /models/library.js
 Done - /models/user.js
  - /public/css/main.css
- - /public/js/card.js
+Done - /public/js/card.js
  - /public/js/cardInput.js
- Done- /public/js/login.js
- Done- /public/js/logout.js
- Done - /public/js/register.js
+Done - /public/js/login.js
+Done - /public/js/logout.js
+Done - /public/js/register.js
  - /public/js/search.js
 Done - /seeds/index.js
  - /seeds/userData.js

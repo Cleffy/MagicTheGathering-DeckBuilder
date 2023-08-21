@@ -12,7 +12,7 @@ router.get('/', async (request, response) => {
         response.status(500).json(error);
     }
 });
-// GET a user by id
+// GET a user by name
 router.get('/:name', async (request, response) => {
     try {
         const userData = await User.findOne({
@@ -20,7 +20,7 @@ router.get('/:name', async (request, response) => {
             include: [{ model: Collection }, { model: Deck }]
         });
         if (!userData) {
-          response.status(404).json({ message: 'No user with this id!' });
+          response.status(404).json({ message: 'No user with this name!' });
           return;
         }
         response.status(200).json(userData);
@@ -52,7 +52,6 @@ router.put('/:id', async (request, response) => {
 router.post('/', async (request, response) => {
     try{
         const userData = await User.create(request.body);
-
         request.session.save(() => {
             request.session.user = userData;
             request.session.loggedIn = true;
