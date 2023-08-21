@@ -1,20 +1,20 @@
 /**
  * @function register
- * @param name
+ * @param userName
  * @param email
  * @param password
  * 
  * Creates a new user.
  */
 async function register(){
-    let name = document.getElementById('regName').value.trim();
+    let userName = document.getElementById('regName').value.trim();
     let email = document.getElementById('regEmail').value.trim();
     let password = document.getElementById('regPassword').value.trim();
 
     if(name && password){
         let response = await fetch('/api/users', {
             method: 'POST',
-            body: JSON.stringify({name, email, password}),
+            body: JSON.stringify({userName, email, password}),
             headers: {'Content-Type': 'application/json'}
         });
 

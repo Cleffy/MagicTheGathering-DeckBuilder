@@ -21,7 +21,7 @@ Deck.init(
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        deckName: {
             type: DataTypes.STRING,
             allowNull: false,
         },

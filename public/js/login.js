@@ -1,6 +1,6 @@
 /**
  * @function login
- * @param name
+ * @param userName
  * @param password
  * 
  * Logs a user into the site
@@ -13,7 +13,7 @@ async function login(){
     if(name && password){
         let response = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({name, password}),
+            body: JSON.stringify({userName, password}),
             headers: {'Content-Type': 'application/json'}
         });
 

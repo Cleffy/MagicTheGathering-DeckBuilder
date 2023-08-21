@@ -31,7 +31,7 @@ Card.init(
             allowNull: false, 
             primaryKey: true,
         },
-        name: {
+        cardName: {
             type: DataTypes.STRING(50),
             allowNull: false,
         },
