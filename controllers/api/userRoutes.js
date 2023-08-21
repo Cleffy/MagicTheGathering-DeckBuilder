@@ -3,12 +3,62 @@ const { User } = require('../../models');
 
 router.get('/', async (request, response) => {
     try {
-      const userData = await User.findAll();
-      response.status(200).json(userData);
+        const userData = await User.findAll();
+        response.status(200).json(userData);
     } catch (error) {
-      response.status(500).json(error);
+        response.status(500).json(error);
     }
-  });
+});
+// GET one user
+router.get('/:id', async (request, response) => {
+    try {
+        const userData = await User.findByPk(request.params.id);
+        if (!userData) {
+          response.status(404).json({ message: 'No user with this id!' });
+          return;
+        }
+        response.status(200).json(userData);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+});
+
+
+// UPDATE a user
+router.put('/:id', async (request, response) => {
+    try {
+        const userData = await User.update(request.body, {
+          where: {
+            id: request.params.id,
+          },
+        });
+        if (!userData[0]) {
+          response.status(404).json({ message: 'No user with this id!' });
+          return;
+        }
+        response.status(200).json(userData);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+});
+  
+// DELETE a user
+router.delete('/:id', async (request, response) => {
+    try {
+        const userData = await User.destroy({
+          where: {
+            id: request.params.id,
+          },
+        });
+        if (!userData) {
+          response.status(404).json({ message: 'No user with this id!' });
+          return;
+        }
+        response.status(200).json(userData);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+});
 
 //Create new user
 router.post('/', async (request, response) => {
@@ -26,56 +76,6 @@ router.post('/', async (request, response) => {
         response.status(400).json(error);
     }
 });
-
-  // GET one user
-  router.get('/:id', async (request, response) => {
-    try {
-      const userData = await User.findByPk(request.params.id);
-      if (!userData) {
-        response.status(404).json({ message: 'No user with this id!' });
-        return;
-      }
-      response.status(200).json(userData);
-    } catch (error) {
-      response.status(500).json(error);
-    }
-  });
-  
-  // UPDATE a user
-  router.put('/:id', async (request, response) => {
-    try {
-      const userData = await User.update(request.body, {
-        where: {
-          id: request.params.id,
-        },
-      });
-      if (!userData[0]) {
-        response.status(404).json({ message: 'No user with this id!' });
-        return;
-      }
-      response.status(200).json(userData);
-    } catch (error) {
-      response.status(500).json(error);
-    }
-  });
-  
-  // DELETE a user
-  router.delete('/:id', async (request, response) => {
-    try {
-      const userData = await User.destroy({
-        where: {
-          id: request.params.id,
-        },
-      });
-      if (!userData) {
-        response.status(404).json({ message: 'No user with this id!' });
-        return;
-      }
-      response.status(200).json(userData);
-    } catch (error) {
-      response.status(500).json(error);
-    }
-  });
 
 //User login
 router.post('/login', async (request, response) => {
@@ -114,6 +114,5 @@ router.post('/logout', (request, response) => {
         response.status(404).end();
     }
 });
-
 
 module.exports = router;

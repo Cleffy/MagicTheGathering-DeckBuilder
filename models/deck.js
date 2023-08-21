@@ -2,6 +2,15 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+/**
+ * @class Deck
+ * @param id
+ * @param name
+ * @param userID
+ * 
+ * Holds the cards information composing a deck.
+ * May add number of views/likes
+ */
 class Deck extends Model {
 }
 

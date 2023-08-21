@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const Collection = require("../../models/collection");
+const Deck = require("../../models/deck");
 
 // Get Deck Info
 router.get("/", (req, res) => {
-  Collection.findAll().then((deckInfo) => {
+  Deck.findAll().then((deckInfo) => {
     console.log({findAllDecks: deckInfo})
     res.status(400).send("No decks found")
     res.json(deckInfo);
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 //  Update Deck Info
 router.put("/:deck_info", (req, res) => {
-  Collection.update({
+  Deck.update({
     deck_name: req.body.Deck_name,
     deck_description: req.body.Deck_description,
     deck_image: req.body.Deck_image,
@@ -23,7 +23,7 @@ router.put("/:deck_info", (req, res) => {
 // Delete Deck
 
 router.delete("/:deck_info", (req, res) => {
-  Collection.destroy({
+  Deck.destroy({
     where: {
       deck_info: req.params.deck_info,
     },

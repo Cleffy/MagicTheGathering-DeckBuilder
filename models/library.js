@@ -2,6 +2,14 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+/**
+ * @class Library
+ * @param id
+ * @param name
+ * 
+ * Collection of cards representing a library
+ * Used for legal cards within a block
+ */
 class Library extends Model {
 }
 

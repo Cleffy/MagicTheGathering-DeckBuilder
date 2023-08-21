@@ -2,6 +2,14 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+/**
+ * @class Collection
+ * @param id
+ * @param name
+ * @param userID
+ * 
+ * Holds the cards within a user's collection
+ */
 class Collection extends Model {
 }
 
