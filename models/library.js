@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Collection extends Model {
+class Library extends Model {
 }
 
-Collection.init(
+Library.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -16,15 +16,6 @@ Collection.init(
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-
-        //User foriegn ID
-        userID: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
         }
     },
     {
@@ -32,8 +23,8 @@ Collection.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'collection'
+        modelName: 'library'
     },
 );
 
-module.exports = Collection;
+module.exports = Library;

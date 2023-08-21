@@ -1,31 +1,31 @@
 const User = require('./user');
-const Deck = require('./deck');
 const Card = require('./card');
 const Collection = require('./collection');
-const Ruleset = require('./ruleset');
+const Deck = require('./deck');
+const Library = require('./library');
 
-/*
-//TODO: Add Belongs to info
-//Cards: Many belongs to Deck
-Card.belongsTo(Deck, {
-    foreignKey: 'deckId', 
-    onDelete: 'CASCADE',
-})
-//Cards: Many belongs to Collection
-Card.belongsToMany(Collection,{
-    through: CollectionGroup,
-    foreignKey: 'cardId',
-})
+User.hasOne(Collection, {
+    foreignKey: 'userID',
+    onDelete: 'CASCADE'
+});
+Collection.belongsTo(User, {
+    foreignKey: 'userID',
+});
+User.hasMany(Deck, {
+    foreignKey: 'userID',
+    onDelete: 'CASCADE'
+});
+Deck.belongsTo(User, {
+    foreignKey: 'userID',
+});
 
-//Deck: Many belongs to User
-Deck.belongsToMany(User,{
-    through: UserDecks,
-    foreignKey: 'deckId',
-})
+Collection.belongsToMany(Card, { through: 'CardCollections' });
+Card.belongsToMany(Collection, { through: 'CardCollections' });
 
-//Collection: Single belongs to User
-Collection.belongsTo(User,{
-    foreignKey: 'collectionId',
-})
-*/
-module.exports = { User, Deck, Card, Collection, Ruleset };
+Deck.belongsToMany(Card, { through: 'CardDecks' });
+Card.belongsToMany(Deck, { through: 'CardDecks' });
+
+Library.belongsToMany(Card, { through: 'CardLibraries' });
+Card.belongsToMany(Library, { through: 'CardLibraries' });
+
+module.exports = { User, Card, Collection };

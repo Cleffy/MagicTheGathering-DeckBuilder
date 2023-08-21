@@ -5,8 +5,7 @@ const seedDecks = require('./deckData');
 // const userData = require('./userData.json');
 
 const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
-
+  //await sequelize.sync({ force: true });
   //TODO: Add Seed Data Calls
   //TODO: Add Seed Data
   await seedDecks()

@@ -49,6 +49,6 @@ app.use(routes);
 // sequelize.sync({alter: true});
 
 //Start express, sync with sequelize database
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync().then(() => {
     app.listen(PORT, () => console.log('Now listening on ' + PORT));
 });

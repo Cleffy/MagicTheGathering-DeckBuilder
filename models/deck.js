@@ -9,18 +9,23 @@ Deck.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: false, 
             primaryKey: true,
             autoIncrement: true
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
-        complete: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
-        },
+
+        //User foriegn ID
+        userID: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        }
     },
     {
         sequelize,
