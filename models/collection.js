@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 /**
@@ -20,10 +19,6 @@ Collection.init(
             allowNull: false, 
             primaryKey: true,
             autoIncrement: true
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
         },
 
         //User foriegn ID

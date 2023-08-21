@@ -1,9 +1,8 @@
-const User = require('./user');
 const Card = require('./card');
 const Collection = require('./collection');
 const Deck = require('./deck');
 const Library = require('./library');
-
+const User = require('./user');
 
 //User has a collection of cards
 User.hasOne(Collection, {
@@ -34,4 +33,4 @@ Card.belongsToMany(Deck, { through: 'CardDecks' });
 Library.belongsToMany(Card, { through: 'CardLibraries' });
 Card.belongsToMany(Library, { through: 'CardLibraries' });
 
-module.exports = { User, Card, Collection };
+module.exports = { Card, Collection, Deck, Library, User };

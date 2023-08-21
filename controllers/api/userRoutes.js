@@ -1,18 +1,23 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Collection, Deck, User } = require('../../models');
 
+// GET All users
 router.get('/', async (request, response) => {
     try {
-        const userData = await User.findAll();
+        const userData = await User.findAll({
+            include: [{ model: Collection }, { model: Deck }]
+        });
         response.status(200).json(userData);
     } catch (error) {
         response.status(500).json(error);
     }
 });
-// GET one user
+// GET a user by id
 router.get('/:id', async (request, response) => {
     try {
-        const userData = await User.findByPk(request.params.id);
+        const userData = await User.findByPk(request.params.id, {
+            include: [{ model: Collection }, { model: Deck }]
+        });
         if (!userData) {
           response.status(404).json({ message: 'No user with this id!' });
           return;
@@ -24,7 +29,7 @@ router.get('/:id', async (request, response) => {
 });
 
 
-// UPDATE a user
+// UPDATE a user by id
 router.put('/:id', async (request, response) => {
     try {
         const userData = await User.update(request.body, {
@@ -41,26 +46,8 @@ router.put('/:id', async (request, response) => {
         response.status(500).json(error);
     }
 });
-  
-// DELETE a user
-router.delete('/:id', async (request, response) => {
-    try {
-        const userData = await User.destroy({
-          where: {
-            id: request.params.id,
-          },
-        });
-        if (!userData) {
-          response.status(404).json({ message: 'No user with this id!' });
-          return;
-        }
-        response.status(200).json(userData);
-    } catch (error) {
-        response.status(500).json(error);
-    }
-});
 
-//Create new user
+// CREATE a new user
 router.post('/', async (request, response) => {
     try{
         const userData = await User.create(request.body);
@@ -76,7 +63,6 @@ router.post('/', async (request, response) => {
         response.status(400).json(error);
     }
 });
-
 //User login
 router.post('/login', async (request, response) => {
     try{
@@ -102,7 +88,6 @@ router.post('/login', async (request, response) => {
         response.status(400).json(error)
     }
 });
-
 //User logout
 router.post('/logout', (request, response) => {
     if(request.session.loggedIn){
@@ -112,6 +97,24 @@ router.post('/logout', (request, response) => {
     }
     else{
         response.status(404).end();
+    }
+});
+
+// DELETE a user
+router.delete('/:id', async (request, response) => {
+    try {
+        const userData = await User.destroy({
+          where: {
+            id: request.params.id,
+          },
+        });
+        if (!userData) {
+          response.status(404).json({ message: 'No user with this id!' });
+          return;
+        }
+        response.status(200).json(userData);
+    } catch (error) {
+        response.status(500).json(error);
     }
 });
 

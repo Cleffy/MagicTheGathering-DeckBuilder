@@ -1,37 +1,65 @@
-const router = require("express").Router();
-const Deck = require("../../models/deck");
+const router = require('express').Router();
+const { Card, Deck, User } = require('../../models');
 
-// Get Deck Info
-router.get("/", (req, res) => {
-  Deck.findAll().then((deckInfo) => {
-    console.log({findAllDecks: deckInfo})
-    res.status(400).send("No decks found")
-    res.json(deckInfo);
-  });
+// GET all collections
+router.get('/', async (request, response) => {
+    try{
+        const deckData = await Deck.findAll({
+            include: [{ model: Card }, { model: User }]
+        })
+        response.status(200).json(deckData);
+    }
+    catch(error){
+        response.status(500).json(error);
+    }
 });
-//  Update Deck Info
-router.put("/:deck_info", (req, res) => {
-  Deck.update({
-    deck_name: req.body.Deck_name,
-    deck_description: req.body.Deck_description,
-    deck_image: req.body.Deck_image,
-  }).then(result => {
-    console.log({update: result})
-  }) ;
-});
-//TODO: Create Deck Info
-// Delete Deck
+// GET a deck by id
+router.get('/:id', async (request, response) => {
+    try{
+        const deckData = await Deck.findByPk(request.params.id, {
+            include: [{ model: Card }, { model: User }]
+        })
 
-router.delete("/:deck_info", (req, res) => {
-  Deck.destroy({
-    where: {
-      deck_info: req.params.deck_info,
-    },
-  })
-    .then((deletedDeck) => {
-      res.json(deletedDeck);
-    })
-    .catch((err) => res.json(err));
+        if(!deckData){
+            response.status(404).json({ message: 'No deck exists with that id!'});
+        }
+        response.status(200).json(deckData);
+    }
+    catch(error){
+        response.status(500).json(error);
+    }
+});
+
+// CREATE new deck
+router.post('/', async (request, response) => {
+    try{
+            const deckData = await Deck.create({
+                userID: request.body.userID
+            });
+            response.status(200).json(deckData);
+    }
+    catch(error){
+        response.status(400).json(error);
+    }
+});
+
+// DELETE a deck by id
+router.delete('/:id', async (request, response) => {
+    try{
+        const deckData = await Deck.destroy({
+            where: {
+                id: request.params.id
+            }
+        });
+
+        if(!deckData){
+            response.status(404).json({ message: 'No deck exists with that id!'});
+        }
+        response.status(200).json(deckData);
+    }
+    catch(error){
+        response.status(400).json(error);
+    }
 });
 
 module.exports = router;

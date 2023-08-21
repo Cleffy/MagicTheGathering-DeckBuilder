@@ -1,9 +1,9 @@
 Done - /config/connection.js
  - /controllers/api/cardRoutes.js
- - /controllers/api/collectionRoutes.js
- - /controllers/api/deckRoutes.js
+Done - /controllers/api/collectionRoutes.js
+Done - /controllers/api/deckRoutes.js
 Done - /controllers/api/index.js
- - /controllers/api/libraryRoutes.js
+Done - /controllers/api/libraryRoutes.js
 Done - /controllers/api/userRoutes.js
  - /controllers/homeRoutes.js
 Done - /controllers/index.js
