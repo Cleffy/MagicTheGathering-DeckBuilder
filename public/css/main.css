@@ -34,21 +34,67 @@ main{
     display: block;
     text-align: right;
 }
+
 #collection{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 200px 200px 200px;
-    gap: 4px;
-    max-width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 60%;
 }
 #buildArea{
-    max-width: 50%;
+    position: absolute;
+    top: 15%;
+    left: 0%;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+.book{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0;
+    max-width: 90%;
+    aspect-ratio: 3 / 2;
+    background-color: black;
+}
+.heap{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+}
+.navigation{
+    width: 5%;
+    height: 200px;
+    background-color: antiquewhite;
+    border-radius: 4px;
+}
+.deckProtector{
+    position:absolute;
+    background-color: crimson;
+    width: 25%;
+    height: fit-content;
 }
 .card{
     background-color: antiquewhite;
     border-radius: 4px;
+    margin: 4px;
 }
 .cardImg{
-    max-width: 100%;
-    max-height: 100%;
+    position: relative;
+    max-width: 95%;
+    max-height: 95%;
+    left: 2.5%;
+    top: 2.5%
+}
+.cardImg :hover{
+    display: relative;
+    transform: scale(1.10);
+    max-width: 110%;
+    max-height: 110%;
 }

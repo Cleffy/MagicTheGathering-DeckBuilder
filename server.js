@@ -7,7 +7,7 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const seedDatabase = require('./seeds/index');
+//const seedDatabase = require('./seeds/index');
 
 //Start Express
 const app = express();
@@ -53,4 +53,4 @@ sequelize.sync().then(() => {
     app.listen(PORT, () => console.log('Now listening on ' + PORT));
 });
 
-seedDatabase();
+//seedDatabase();
