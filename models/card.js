@@ -4,6 +4,7 @@ const sequelize = require('../config/connection');
 /**
  * @class Card
  * @param id- unique identifier for easy reference
+ * @param scryFallId- ID from scryfall
  * @param cardName- the name of the card
  * @param spellType- the card's method of being played (instant, sorcery, creature, artifact, enchantment, land, planeswalker)
  * @param subType(deprecated)- a category or "tribe" the card belongs to (goblins, elves, vehicles, equipment, etc.)
@@ -27,9 +28,10 @@ class Card extends Model {
 Card.init(
     {
         id: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.INTEGER,
             allowNull: false, 
             primaryKey: true,
+            autoIncrement: true
         },
         cardName: {
             type: DataTypes.STRING(50),
