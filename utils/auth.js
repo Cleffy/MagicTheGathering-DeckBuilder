@@ -11,7 +11,7 @@ const withAuth = (request, response, next) => {
 //Restrict access to admin account, redirect others to home
 const withAdmin = (request, response, next) => {
     if(request.session.loggedIn){
-        if(request.session.user.name = 'admin'){
+        if(request.session.user.userName = 'admin'){
             next();
         }
         else{

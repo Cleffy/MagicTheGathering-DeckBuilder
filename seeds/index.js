@@ -7,7 +7,7 @@ async function seedDatabase(){
     try{
         //Add an admin account and block access to restricted pages.
         const admin = await User.findOne({
-            where: {name : 'admin'}
+            where: {userName : 'admin'}
         });
         if(!admin){
             const createAdmin = await User.create({
@@ -16,7 +16,7 @@ async function seedDatabase(){
                 password: process.env.ADMIN_PASS
             });
             if(createAdmin){
-                console.log(`Create admin ${createAdmin.name}`);
+                console.log(`Create admin ${createAdmin.userName}`);
             }
             else{
                 console.log('Failed to create admin');

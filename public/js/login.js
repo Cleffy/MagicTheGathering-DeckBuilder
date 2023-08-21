@@ -7,10 +7,10 @@
  */
 async function login(){
 
-    let name = document.getElementById('name').value.trim();
+    let userName = document.getElementById('name').value.trim();
     let password = document.getElementById('password').value.trim();
 
-    if(name && password){
+    if(userName && password){
         let response = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify({userName, password}),

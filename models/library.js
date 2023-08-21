@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 /**
  * @class Library
  * @param id
- * @param name
+ * @param libraryName
  * 
  * Collection of cards representing a library
  * Used for legal cards within a block

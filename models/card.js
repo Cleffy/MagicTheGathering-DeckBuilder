@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 /**
  * @class Card
  * @param id- unique identifier for easy reference
- * @param name- the name of the card
+ * @param cardName- the name of the card
  * @param spellType- the card's method of being played (instant, sorcery, creature, artifact, enchantment, land, planeswalker)
  * @param subType(deprecated)- a category or "tribe" the card belongs to (goblins, elves, vehicles, equipment, etc.)
  * @param color- the 5 "flavors" of mana used for playing cards. (white-W, blue-U, black-B, red-R, green-G)
