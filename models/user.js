@@ -5,7 +5,7 @@ const sequelize = require("../config/connection");
 /**
  * @class User
  * @param id
- * @param name
+ * @param userName
  * @param email
  * @param password
  * 

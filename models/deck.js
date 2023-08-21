@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 /**
  * @class Deck
  * @param id
- * @param name
+ * @param deckName
  * @param userID
  * 
  * Holds the cards information composing a deck.

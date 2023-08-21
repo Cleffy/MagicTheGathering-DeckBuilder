@@ -11,7 +11,7 @@ async function register(){
     let email = document.getElementById('regEmail').value.trim();
     let password = document.getElementById('regPassword').value.trim();
 
-    if(name && password){
+    if(userName && password){
         let response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({userName, email, password}),

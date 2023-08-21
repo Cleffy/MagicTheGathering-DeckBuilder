@@ -8,14 +8,14 @@ class Card {
     constructor(id, parentEl) {
         this.id = id;
         this.parentEl = parentEl;
-        this.name;
+        this.cardName;
         this.image;
     }
     async getCardInfo() {
         let response = await fetch('/api/cards/' + this.id, {
             method: 'GET'
         });
-        this.name = response.name;
+        this.cardName = response.cardName;
         this.image = response.image;
     }
 
@@ -23,7 +23,7 @@ class Card {
         let articleEl = document.createElement('article');
         articleEl.className = 'card';
         let h4El = document.createElement('h4');
-        h4El.textContent = this.name;
+        h4El.textContent = this.cardName;
         let imgEl = document.createElement('img');
         imgEl.className = 'cardImg';
         imgEl.src = this.image;

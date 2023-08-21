@@ -41,7 +41,7 @@ function renderCollection(){
         let articleEl = document.createElement('article');
         articleEl.className = 'card';
         let h4El = document.createElement('h4');
-        h4El.textContent = collection[index+iterations].name;
+        h4El.textContent = collection[index+iterations].cardName;
         let imgEl = document.createElement('img');
         imgEl.className = 'cardImg';
         imgEl.src = collection[index+iterations].image;
