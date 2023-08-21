@@ -34,5 +34,3 @@ class Card {
         this.parentEl.appendChild(articleEl);
     }
 };
-
-module.exports = Card;
