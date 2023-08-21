@@ -17,13 +17,13 @@ Done - /models/user.js
  - /public/css/main.css
  - /public/js/card.js
  - /public/js/cardInput.js
- - /public/js/login.js
- - /public/js/logout.js
+ Done- /public/js/login.js
+ Done- /public/js/logout.js
+ Done - /public/js/register.js
  - /public/js/search.js
- - /seeds/index.js
- - /seeds/libraryData.js
+Done - /seeds/index.js
  - /seeds/userData.js
- - /utils/auth.js
+Done - /utils/auth.js
  - /utils/cardInfo.js
  - /utils/helpers.js
  - /utils/randomPlay.js
@@ -35,3 +35,5 @@ Done - LICENSE
 Done - package.json
  - README.md
 Done - server.js
+
+Todo later. Pass status information for the user
