@@ -13,10 +13,10 @@ router.get('/', async (request, response) => {
     }
 });
 // GET a user by name
-router.get('/:name', async (request, response) => {
+router.get('/:userName', async (request, response) => {
     try {
         const userData = await User.findOne({
-            where: {name : request.params.name},
+            where: {userName : request.params.userName},
             include: [{ model: Collection }, { model: Deck }]
         });
         if (!userData) {
@@ -66,7 +66,7 @@ router.post('/', async (request, response) => {
 //User login
 router.post('/login', async (request, response) => {
     try{
-        const userData = await User.findOne({ where: { name: request.body.name }});
+        const userData = await User.findOne({ where: { userName: request.body.userName }});
         if(!userData){
             response.status(400).json({message: 'This user is not registered. Please register or try again.'});
             return;

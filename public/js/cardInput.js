@@ -11,7 +11,7 @@ async function addCardData(file) {
             cards = JSON.parse(data.target.result);
             for(let card of cards){
                 let id = card.id;
-                let name = card.name;
+                let cardName = card.name;
                 let type = card.type_line;
                 let color = card.color_identity ? '' : null;
                 let manaCost = card.mana_cost ? card.mana_cost : null;
@@ -65,7 +65,7 @@ async function addCardData(file) {
                 }
                 let response = await fetch('/api/cards/', {
                     method: 'POST',
-                    body: JSON.stringify({id, name, type, color, manaCost, ability, flavorText, power, toughness, image, rarity, set_name, artist, standard, future, historic, gladiator, pioneer, explorer, modern, legacy, pauper, vintage, penny, commander, oathbreaker, brawl, historicbrawl, alchemy, paupercommander, duel, oldschool, premodern, predh}),
+                    body: JSON.stringify({id, cardName, type, color, manaCost, ability, flavorText, power, toughness, image, rarity, set_name, artist, standard, future, historic, gladiator, pioneer, explorer, modern, legacy, pauper, vintage, penny, commander, oathbreaker, brawl, historicbrawl, alchemy, paupercommander, duel, oldschool, premodern, predh}),
                     headers: { 'Content-Type': 'application/json' }
                 });
                 if(response.ok){

@@ -20,7 +20,7 @@ Library.init(
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        libraryName: {
             type: DataTypes.STRING,
             allowNull: false,
         }

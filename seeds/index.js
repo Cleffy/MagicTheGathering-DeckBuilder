@@ -11,7 +11,7 @@ async function seedDatabase(){
         });
         if(!admin){
             const createAdmin = await User.create({
-                name: 'admin',
+                userName: 'admin',
                 email: 'admin@admin.com',
                 password: process.env.ADMIN_PASS
             });
