@@ -1,1 +1,0 @@
-const cardData = require('')
