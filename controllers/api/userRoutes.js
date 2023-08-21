@@ -13,9 +13,10 @@ router.get('/', async (request, response) => {
     }
 });
 // GET a user by id
-router.get('/:id', async (request, response) => {
+router.get('/:name', async (request, response) => {
     try {
-        const userData = await User.findByPk(request.params.id, {
+        const userData = await User.findOne({
+            where: {name : request.params.name},
             include: [{ model: Collection }, { model: Deck }]
         });
         if (!userData) {

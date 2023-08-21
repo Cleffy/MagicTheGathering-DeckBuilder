@@ -1,17 +1,34 @@
-const sequelize = require('../config/connection');
-// const { User, Deck, Card, Collection, Ruleset } = require('../models');
-const seedDecks = require('./deckData');
+require('dotenv').config();
+const { User } = require('../models');
 
-// const userData = require('./userData.json');
+//seed data
 
-const seedDatabase = async () => {
-  //await sequelize.sync({ force: true });
-  //TODO: Add Seed Data Calls
-  //TODO: Add Seed Data
-  await seedDecks()
-  console.log('decks seeded') 
-
-  process.exit(0);
+async function seedDatabase(){
+    try{
+        //Add an admin account and block access to restricted pages.
+        const admin = await User.findOne({
+            where: {name : 'admin'}
+        });
+        if(!admin){
+            const createAdmin = await User.create({
+                name: 'admin',
+                email: 'admin@admin.com',
+                password: process.env.ADMIN_PASS
+            });
+            if(createAdmin){
+                console.log(`Create admin ${createAdmin.name}`);
+            }
+            else{
+                console.log('Failed to create admin');
+            }
+        }
+        else{
+            console.log('Admin exists.')
+        }
+    }
+    catch(error){
+        console.error(error);
+    }
 };
 
-seedDatabase();
+module.exports = seedDatabase;
