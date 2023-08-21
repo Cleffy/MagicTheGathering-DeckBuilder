@@ -28,10 +28,11 @@
             <label for="name">User Name: </label>
             <input type="text" name="name" id="name" /><br />
             <label for="password">Password: </label>
-            <input type="text" name="password"  id="password" /><br />
+            <input type="password" name="password"  id="password" /><br />
             <button type="button" onclick="login()">Login</button>
             <a href="/register"><button type="button">Register</button></a>
             {{/unless}}
+            <p id="logStatus"></p>
         </section>
     </header>
     <main>{{{body}}}</main>

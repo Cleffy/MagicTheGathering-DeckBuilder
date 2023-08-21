@@ -2,17 +2,17 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 /**
- * @class Collection
+ * @class Library
  * @param id
  * @param name
- * @param userID
  * 
- * Holds the cards within a user's collection
+ * Collection of cards representing a library
+ * Used for legal cards within a block
  */
-class Collection extends Model {
+class Library extends Model {
 }
 
-Collection.init(
+Library.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -20,14 +20,9 @@ Collection.init(
             primaryKey: true,
             autoIncrement: true
         },
-
-        //User foriegn ID
-        userID: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
     },
     {
@@ -35,8 +30,8 @@ Collection.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'collection'
+        modelName: 'library'
     },
 );
 
-module.exports = Collection;
+module.exports = Library;

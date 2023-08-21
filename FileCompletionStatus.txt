@@ -1,17 +1,39 @@
 Done - /config/connection.js
-    /controllers/api/cardRoutes.js
-    /controllers/api/deckRoutes.js
-    /controllers/api/index.js
+ - /controllers/api/cardRoutes.js
+Done - /controllers/api/collectionRoutes.js
+Done - /controllers/api/deckRoutes.js
+Done - /controllers/api/index.js
+Done - /controllers/api/libraryRoutes.js
 Done - /controllers/api/userRoutes.js
-    /controllers/homeRoutes.js
-    /controllers/index.js
+ - /controllers/homeRoutes.js
+Done - /controllers/index.js
 Done - /db/schema.sql
-    /models/card.js
-    /models/collection.js
-    /models/deck.js
-    /models/index.js
-    /models/ruleset.js
+Done - /models/card.js
+Dont - /models/collection.js
+Done - /models/deck.js
+Done - /models/index.js
+Done - /models/library.js
 Done - /models/user.js
+ - /public/css/main.css
+ - /public/js/card.js
+ - /public/js/cardInput.js
+ Done- /public/js/login.js
+ Done- /public/js/logout.js
+ Done - /public/js/register.js
+ - /public/js/search.js
+Done - /seeds/index.js
+ - /seeds/userData.js
+Done - /utils/auth.js
+ - /utils/cardInfo.js
+ - /utils/helpers.js
+ - /utils/randomPlay.js
+ - /utils/ruleInfo.js
+Done - .env
+Done - .env.example
 Done - .gitignore
 Done - LICENSE
+Done - package.json
+ - README.md
 Done - server.js
+
+Todo later. Pass status information for the user

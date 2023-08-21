@@ -22,3 +22,9 @@ main{
     display: block;
     text-align: right;
 }
+#collection{
+    max-width: 50%;
+}
+#buildArea{
+    max-width: 50%;
+}
