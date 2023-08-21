@@ -21,8 +21,29 @@ async function addCardData(file) {
                 let toughness = card.toughness ? card.toughness : null;
                 let image = card.image_uris ? card.image_uris.border_crop : null;
                 let rarity = card.rarity;
-                let set = card.set_name;
+                let set_name = card.set_name;
                 let artist = card.artist;
+                let standard = card.legalities.standard == "legal" ? true : false;
+                let future = card.legalities.future == "legal" ? true : false;
+                let historic = card.legalities.historic == "legal" ? true : false;
+                let gladiator = card.legalities.gladiator == "legal" ? true : false;
+                let pioneer = card.legalities.pioneer == "legal" ? true : false;
+                let explorer = card.legalities.explorer == "legal" ? true : false;
+                let modern = card.legalities.modern == "legal" ? true : false;
+                let legacy = card.legalities.legacy == "legal" ? true : false;
+                let pauper = card.legalities.pauper == "legal" ? true : false;
+                let vintage = card.legalities.vintage == "legal" ? true : false;
+                let penny = card.legalities.penny == "legal" ? true : false;
+                let commander = card.legalities.commander == "legal" ? true : false;
+                let oathbreaker = card.legalities.oathbreaker == "legal" ? true : false;
+                let brawl = card.legalities.brawl == "legal" ? true : false;
+                let historicbrawl = card.legalities.historicbrawl == "legal" ? true : false;
+                let alchemy = card.legalities.alchemy == "legal" ? true : false;
+                let paupercommander = card.legalities.paupercommander == "legal" ? true : false;
+                let duel = card.legalities.duel == "legal" ? true : false;
+                let oldschool = card.legalities.oldschool == "legal" ? true : false;
+                let premodern = card.legalities.premodern == "legal" ? true : false;
+                let predh = card.legalities.predh == "legal" ? true : false;
                 for(let colorType of card.color_identity){
                     switch(colorType){
                         case "W":
@@ -44,7 +65,7 @@ async function addCardData(file) {
                 }
                 let response = await fetch('/api/cards/', {
                     method: 'POST',
-                    body: JSON.stringify({id, name, type, color, manaCost, ability, flavorText, power, toughness, image, rarity, set, artist}),
+                    body: JSON.stringify({id, name, type, color, manaCost, ability, flavorText, power, toughness, image, rarity, set_name, artist, standard, future, historic, gladiator, pioneer, explorer, modern, legacy, pauper, vintage, penny, commander, oathbreaker, brawl, historicbrawl, alchemy, paupercommander, duel, oldschool, premodern, predh}),
                     headers: { 'Content-Type': 'application/json' }
                 });
                 if(response.ok){
