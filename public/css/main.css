@@ -11,20 +11,57 @@ body{
     text-align: left;
 }
 header{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 20%;
-    gap: 6.25%
+    top: 0;
+    left: 0;
+    height: 15%;
+    width: 100%;
 }
-#title{
+button{
+    background-color: darkorange;
+    color: antiquewhite;
+    border-radius: 4px;
+    height: 24px;
+    width: 64px;
+    transition: background-color 2s;
+    transition: transform 1s;
+}
+button:hover{
+    background-color: crimson;
+    transform: scale(1.1);
+}
+#magic{
+    text-align: center;
+    color: antiquewhite;
+    font-size: 48pt;
 }
 #user{
+    position: absolute;
+    right: 5%;
+    top: 2.5%;
     display: block;
     text-align: right;
 }
-h1, h2, h3, h4{
-    display: inline;
-    max-width: fit-content;
+
+#buildDeck a{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 36pt;
+    text-align: center;
+    text-decoration: none;
+    color: darkorange;
+    transition: color 2s;
+    transition: font-size 1s;
+}
+#buildDeck a:hover{
+    color: crimson;
+    font-size: 38pt;
+}
+
+h4{
+    color:darkslategrey;
+    text-align: justify;
+    size: 14pt;
 }
 main{
     max-width: 100%;
@@ -42,11 +79,12 @@ main{
     display: flex;
     align-items: center;
     width: 50%;
-    height: 60%;
+    aspect-ratio: 1/1;
+    max-height: 50%;
 }
 #buildArea{
     position: absolute;
-    top: 15%;
+    bottom: 5%;
     left: 0%;
     width: 50%;
     aspect-ratio: 1 / 1;
@@ -92,9 +130,8 @@ main{
     left: 2.5%;
     top: 2.5%
 }
-.cardImg :hover{
-    display: relative;
-    transform: scale(1.10);
-    max-width: 110%;
-    max-height: 110%;
+.card:hover{
+    display: fixed;
+    z-index: 1;
+    transform: scale(2);
 }

@@ -13,6 +13,10 @@ window.onload = async function(){
     collection = await getFormat('standard');
     renderCollection();
     renderDeck();
+    addEventListener('resize', () => {
+        renderCollection();
+        renderDeck();
+    })
 }
 
 //get all the cards in a format
@@ -83,6 +87,7 @@ function renderCard(bookEl){
 
         imgEl.className = 'cardImg';
         imgEl.src = collection[index+i].image;
+        imgEl.alt = collection[index+i].cardName;
         imgEl.addEventListener('click', (event) => {
             event.stopPropagation();
             deck.push(collection[index+i]);
@@ -99,7 +104,7 @@ function renderDeck(){
 //creates a pile of cards to represent the deck
 function createHeap(){
     let heapEl = document.createElement('section');
-    let centerX = document.documentElement.clientWidth / 5;
+    let centerX = document.documentElement.clientWidth / 4;
     let centerY = document.documentElement.clientHeight / 4;
 
     heapEl.className = 'heap';
@@ -112,6 +117,7 @@ function createHeap(){
         let imageEl = document.createElement('img');
         imageEl.className = 'cardImg';
         imageEl.src = deck[i].image;
+        imageEl.alt = deck[i].cardName;
         divEl.style.cssText =`
         z-index: ${i};
         left: ${Math.floor((Math.random() - 0.5) * 200) + centerX}px;
