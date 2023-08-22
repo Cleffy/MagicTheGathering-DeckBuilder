@@ -16,9 +16,8 @@ This is a deck-building assistant for “Magic: The Gathering” players. Its fu
 
 Users can log in, browse a catalog of existing cards, and sort desired cards into playable; so they can create balanced, thematic, and fun decks without needing a deep understanding of the entire card library.  
 
-![demo](./MTG%20-%20Deck%20Builder%20Assistant.png)
-![demo](./MTG%20-%20Deck%20Builder%20Assistant2.png)
-
+![demo](./MTG%20-%20Deck%20Builder%20Assistant.png) 
+![demo](./MTG%20-%20Deck%20Builder%20Assistant2.png) 
 
 ## [Installation](#table-of-contents)
 To be able to install the application you can run `npm install` in the integrated terminal. Additionally to run the tool use the following command `node server.js`.
