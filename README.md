@@ -28,12 +28,12 @@ You will need MySQL setup on your dev device for local dev. MySQL connections wi
 Once packages are installed, open an integrated terminal and run the following: `npm start`.
 
 ## [Credits](#table-of-contents)
-Kevin Smith - [GitHub](https://github.com/Cleffy/)
-Clayton Cadwell - [GitHub](https://github.com/Claytonlax/)
-Diana Bee - [GitHub](https://github.com/dianabee16/)
-Jeff Tecson - [GitHub](https://github.com/jtecson85/)
-Lars Anderson - [GitHub](https://github.com/larsnanderson/)
-Kyle Espera - [GitHub](https://github.com/kyleespera/)
+* Kevin Smith - [GitHub](https://github.com/Cleffy/)
+* Clayton Cadwell - [GitHub](https://github.com/Claytonlax/)
+* Diana Bee - [GitHub](https://github.com/dianabee16/)
+* Jeff Tecson - [GitHub](https://github.com/jtecson85/)
+* Lars Anderson - [GitHub](https://github.com/larsnanderson/)
+* Kyle Espera - [GitHub](https://github.com/kyleespera/)
 
 ## [Questions](#table-of-contents)
 If you have any questions about the functionality of the app or installation, please reach out to us.
